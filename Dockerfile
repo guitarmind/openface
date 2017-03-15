@@ -1,8 +1,7 @@
-FROM bamos/ubuntu-opencv-dlib-torch:ubuntu_14.04-opencv_2.4.11-dlib_19.0-torch_2016.07.12
-MAINTAINER Brandon Amos <brandon.amos.cs@gmail.com>
+# * Forked from OpenFace
 
-# TODO: Should be added to opencv-dlib-torch image.
-RUN ln -s /root/torch/install/bin/* /usr/local/bin
+FROM guitarmind/opencv-dlib-torch
+MAINTAINER Mark Peng <markpeng73@msn.com>
 
 RUN apt-get update && apt-get install -y \
     curl \
@@ -17,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     python-protobuf\
     wget \
     zip \
+    htop \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD . /root/openface
